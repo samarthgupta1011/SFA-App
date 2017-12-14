@@ -1,11 +1,14 @@
-package com.samarthgupta.sfa_app.Activities.New;
+package com.samarthgupta.sfa_app.Activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.math.BigDecimal;
+import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,10 +53,12 @@ public class TasksActivity extends AppCompatActivity {
         Employee emp =  new GsonBuilder().create().fromJson(getSharedPreferences("Login", Context.MODE_PRIVATE).getString("Data",null),
                 Employee.class);
 
+        Log.d("Tasks",emp.getDept());
         Call<List<JobTicket>> call = client.getEmpTickets(emp.getDept());
         call.enqueue(new Callback<List<JobTicket>>() {
             @Override
             public void onResponse(Call<List<JobTicket>> call, Response<List<JobTicket>> response) {
+                Log.d("Tasks",response.toString());
                 rv.setAdapter(new TicketAdapter(response.body()));
 
                 pb.setVisibility(View.INVISIBLE);
@@ -109,16 +114,25 @@ public class TasksActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int pos = getAdapterPosition();
+
+
+
+
                 Intent intent = new Intent(TasksActivity.this,UpdateProgressActivity.class).
                         putExtra("A-use",list.get(pos).getProcesses().getA().isUse()).
                         putExtra("B-use",list.get(pos).getProcesses().getB().isUse()).
-                        putExtra("A-percent",list.get(pos).getProcesses().getA().getPercentageComp()).
-                        putExtra("B-percent",list.get(pos).getProcesses().getB().getPercentageComp()).
+                        putExtra("A-percent",roundOffNumber(list.get(pos).getProcesses().getA().getPercentageComp())).
+                        putExtra("B-percent",roundOffNumber(list.get(pos).getProcesses().getB().getPercentageComp())).
                         putExtra("wt",list.get(pos).getWt());
                         startActivity(intent);
 
 
             }
+
+            double roundOffNumber(float f){
+                return Math.round(f * 100.0) / 100.0;
+            }
+
         }
     }
 

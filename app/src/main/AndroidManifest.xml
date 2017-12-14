@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainActivity" />
         <activity
             android:name=".Activities.HomeActivity"
             android:label="Home"
@@ -31,20 +30,20 @@
             android:label="Register"
             android:parentActivityName=".Activities.SignInActivity"></activity>
         <activity
-            android:name=".Activities.New.ClientDetailsActivity"
+            android:name=".Activities.ClientDetailsActivity"
             android:label="Client Details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.New.JobDetailsActivity"
+            android:name=".Activities.JobDetailsActivity"
             android:label="Job Details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.New.QcDetailsActivity"
+            android:name=".Activities.QcDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.New.TasksActivity"
+        <activity android:name=".Activities.TasksActivity"
             android:parentActivityName=".Activities.HomeActivity"/>
-        <activity android:name=".Activities.New.UpdateProgressActivity"
-            android:parentActivityName=".Activities.New.TasksActivity"></activity>
+        <activity android:name=".Activities.UpdateProgressActivity"
+            android:parentActivityName=".Activities.TasksActivity"></activity>
     </application>
 
 </manifest>

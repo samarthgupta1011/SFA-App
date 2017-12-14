@@ -15,17 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.GsonBuilder;
 import com.samarthgupta.sfa_app.DataInterface;
 import com.samarthgupta.sfa_app.POJO.Employee;
 import com.samarthgupta.sfa_app.R;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,12 +30,12 @@ import static com.samarthgupta.sfa_app.POJO.GlobalAccess.baseUrl;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText etEmailLogin, etPassLogin;
+    EditText etMobLogin, etPassLogin;
     TextView tvRegister;
     ProgressBar pb;
     Button btLogin;
 
-    String email, pass;
+    String mob, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +50,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_sign_in);
 
 
-        etEmailLogin = (EditText) findViewById(R.id.et_login_email);
+        etMobLogin = (EditText) findViewById(R.id.et_login_email);
         etPassLogin = (EditText) findViewById(R.id.et_login_password);
         tvRegister = (TextView) findViewById(R.id.tv_register);
         pb = (ProgressBar) findViewById(R.id.pb_login);
@@ -72,23 +65,24 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.bt_login:
 
-                email = etEmailLogin.getText().toString().trim();
+                mob = etMobLogin.getText().toString().trim();
                 pass = etPassLogin.getText().toString().trim();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(this, "Enter email address", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(mob)) {
+                    Toast.makeText(this, "Enter Mobile Number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(pass)) {
-                    Toast.makeText(this, "Enter email address", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 btLogin.setVisibility(View.GONE);
                 pb.setVisibility(View.VISIBLE);
 
-                Employee emp = new Employee(email, pass);
+                Employee emp = new Employee(mob, pass);
+                Log.d("Login", mob + " "+pass);
                 Retrofit retrofit = new Retrofit.Builder().baseUrl(baseUrl).addConverterFactory(GsonConverterFactory.create()).build();
                 DataInterface client = retrofit.create(DataInterface.class);
                 Call<Employee> call = client.empLogin(emp);
@@ -98,9 +92,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                     public void onResponse(Call<Employee> call, Response<Employee> response) {
                         Log.i("resp",response.body().isStatus()+" ");
 
-                        //status is false
+                        //Status is false
                         if (!response.body().isStatus()) {
-                            Toast.makeText(SignInActivity.this, "Incorrect email address entered", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Incorrect mob address entered", Toast.LENGTH_SHORT).show();
                             btLogin.setVisibility(View.VISIBLE);
                             pb.setVisibility(View.GONE);
                             return;
@@ -140,3 +134,5 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 }
+
+

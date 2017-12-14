@@ -1,4 +1,4 @@
-package com.samarthgupta.sfa_app.Activities.New;
+package com.samarthgupta.sfa_app.Activities;
 
 import android.app.Dialog;
 import android.content.Intent;

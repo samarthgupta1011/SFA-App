@@ -1,4 +1,4 @@
-package com.samarthgupta.sfa_app.Activities.New;
+package com.samarthgupta.sfa_app.Activities;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -50,8 +50,8 @@ public class UpdateProgressActivity extends AppCompatActivity {
 
         boolean A_use = getIntent().getBooleanExtra("A-use",false);
         boolean B_use = getIntent().getBooleanExtra("B-use",false);
-        float A_perc = getIntent().getFloatExtra("A-percent",0);
-        float B_perc = getIntent().getFloatExtra("B-percent",0);
+        double A_perc = getIntent().getDoubleExtra("A-percent",0);
+        double B_perc = getIntent().getDoubleExtra("B-percent",0);
 
         wt = getIntent().getStringExtra("wt");
         empId = new GsonBuilder().create().fromJson(getSharedPreferences("Login", Context.MODE_PRIVATE).getString("Data",null), Employee.class).getDept();

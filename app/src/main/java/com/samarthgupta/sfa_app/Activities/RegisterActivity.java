@@ -63,7 +63,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(email) && emailValidator(email)) {
-                    Toast.makeText(RegisterActivity.this, "Enter your email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Enter your mob", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -169,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        Map<String, String> map = new HashMap<String, String>();
 //        map.put("personname", name);
 //        map.put("contact", mob);
-//        map.put("email", email);
+//        map.put("mob", mob);
 //        map.put("pass", pass);
 //        //Department
 //        map.put("name", dept);

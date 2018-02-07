@@ -6,5 +6,5 @@ package com.samarthgupta.sfa_app.POJO;
 
 public class GlobalAccess {
     public static JobTicket jobTicket;
-    public static String baseUrl = " http://3ab93474.ngrok.io";
+    public static String baseUrl = "http://1990404d.ngrok.io";
 }

@@ -15,20 +15,16 @@
         <activity
             android:name=".Activities.HomeActivity"
             android:label="Home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.SignInActivity"
             android:label="Sign in">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Activities.RegisterActivity"
             android:label="Register"
-            android:parentActivityName=".Activities.SignInActivity"></activity>
+            android:parentActivityName=".Activities.SignInActivity" />
         <activity
             android:name=".Activities.ClientDetailsActivity"
             android:label="Client Details"
@@ -40,10 +36,20 @@
         <activity
             android:name=".Activities.QcDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.TasksActivity"
-            android:parentActivityName=".Activities.HomeActivity"/>
-        <activity android:name=".Activities.UpdateProgressActivity"
-            android:parentActivityName=".Activities.TasksActivity"></activity>
+        <activity
+            android:name=".Activities.TasksActivity"
+            android:parentActivityName=".Activities.HomeActivity" />
+        <activity
+            android:name=".Activities.UpdateProgressActivity"
+            android:parentActivityName=".Activities.TasksActivity" />
+        <activity android:name=".Activities.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
